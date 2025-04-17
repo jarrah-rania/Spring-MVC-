@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="hhtp://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Products</title>
@@ -7,29 +7,30 @@
 </head>
 <body>
 <div class="p-3">
-    <table class="table">
-        <thead>
+    <h2 class="mb-3">Liste des Produits</h2>
+    <table class="table table-bordered">
+        <thead class="table-dark">
         <tr>
             <th>ID</th>
-            <th>Name</th>
-            <th>Price</th>
-            <th>Quantity</th>
+            <th>Nom</th>
+            <th>Prix</th>
+            <th>Quantité</th>
+            <th>Actions</th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="p : ${listProducts}">
-            <td th : text="${p.id}"></td>
-            <td th : text="${p.name}"></td>
-            <td th : text="${p.price}"></td>
-            <td th : text="${p.quantity}"></td>
+            <td th:text="${p.id}"></td>
+            <td th:text="${p.name}"></td>
+            <td th:text="${p.price}"></td>
+            <td th:text="${p.quantity}"></td>
             <td>
-                <a onclick="return confirm('Etes vous sure de vouloir supprimer')" class="btn btn-danger" th:href="@{/delete(id=${p.id})}
-">Delete</a>
+                <a th:href="@{/delete(id=${p.id})}" class="btn btn-danger" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ?')">
+                    Delete
+                </a>
             </td>
-
         </tr>
         </tbody>
-
     </table>
 </div>
 </body>
